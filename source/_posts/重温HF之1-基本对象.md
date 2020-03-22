@@ -20,3 +20,5 @@ byte b = 3;
 if(a == b){// true cast byte to int}
 ```
 #### 5. 比较primitives 或者 指向相同对象的引用可以用 ==, 比较对象是否是同一对象用.equals().
+#### 6. import ！= include，只是为了声明class的时候省事
+#### 7. java.lang 类不需要导入，包含System，String等类。
