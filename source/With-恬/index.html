@@ -1,7 +1,11 @@
+---
+layout: false
+---
 <!DOCTYPE html>
 <html lang="zh-CN">
 
 <head>
+   <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap" rel="stylesheet">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -13,6 +17,9 @@
             -webkit-font-smoothing: antialiased;
             font-family: Helvetica Neue, Helvetica, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
             background-image: url('bg2.jpg');
+            background-size: cover;
+            background-attachment: fixed ;
+            background-repeat: no-repeat;
             font-size: 85%;
             margin: 0;
         }
@@ -23,7 +30,9 @@
         }
         
         .content {
-            position: absolute;
+            font-family: 'ZCOOL KuaiLe', cursive;
+            position: top center;
+            margin-top: 150px;
             width: 100%;
             top: 40%;
             transform: translate(0, -50%);
@@ -44,29 +53,32 @@
 
 <body>
     <div class="content">
-        <h2>和恬恬小可爱在一起了</h2>
+        <h2>恬恬，我们已经在一起</h2>
         <div class="timer">
-            <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds
+            <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds了！
         </div>
     </div>
 
     <script>
         function timer() {
-            var start = new Date(2020, 02, 14); 
+            var start = new Date('2020-02-14T23:12:00'); // 2020
             var t = new Date() - start;
+
             var h = ~~(t / 1000 / 60 / 60 % 24);
             if (h < 10) {
                 h = "0" + h;
             }
+            console.log(h + 'hour');
             var m = ~~(t / 1000 / 60 % 60);
             if (m < 10) {
                 m = "0" + m;
             }
-
+            console.log(m + 'min');
             var s = ~~(t / 1000 % 60);
             if (s < 10) {
                 s = "0" + s;
             }
+            console.log(s + 'second');
             document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
             document.getElementById('h').innerHTML = h;
             document.getElementById('m').innerHTML = m;

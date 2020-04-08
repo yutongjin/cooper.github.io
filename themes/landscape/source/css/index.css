@@ -1,0 +1,14 @@
+.body{
+    background-color: #fff;
+    font-size: 14px;
+}
+.container{
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.content{ 
+    a{
+        color: red;
+    }
+}

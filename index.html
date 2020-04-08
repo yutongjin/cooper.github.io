@@ -86,9 +86,15 @@
 <meta property="og:locale" content="en_US">
 <meta property="article:author" content="Cubo">
 <meta name="twitter:card" content="summary">
+<div id="like_button_container"></div>
 
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
-
+    <!-- Load our React component. -->
+    <script src="like_button.js"></script>
 <script type="text/javascript" id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
@@ -216,9 +222,7 @@
             
   <section id="posts" class="posts-expand">
     
-      
-
-  
+    
 
   
   
@@ -290,7 +294,8 @@
     
 
     
-    
+    <div id="like_button_container"></div>
+
     
     <div class="post-body" itemprop="articleBody">
 

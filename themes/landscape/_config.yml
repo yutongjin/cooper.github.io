@@ -1,10 +1,13 @@
 # Header
 menu:
   Home: /
-  Archives: /archives
-  about: /about
+  #Archives: /archives
+  #about: /about
 
 rss: /atom.xml
+#less
+less:
+  compress: true
 
 # Content
 excerpt_link: Read More
