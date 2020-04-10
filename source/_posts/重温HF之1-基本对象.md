@@ -8,7 +8,7 @@ date: 2020-03-17 15:00:28
 password:
 summary:
 tags:
-categories:
+categories: Java
 ---
 #### 1. 8种基本类型(primitive types) : boolean、char、byte、int、long、short、float、double.
 #### 2. Java is pass by value, which means pass by copy. Everything, copy of primitive or copy of a remote reference to an object.

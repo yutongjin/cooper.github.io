@@ -8,7 +8,7 @@ date: 2020-03-06 22:36:06
 password:
 summary:
 tags:
-categories:
+categories: Java
 ---
 每天学一点点，记录一点点。
 ### 考虑使用静态工厂方法代替构造器

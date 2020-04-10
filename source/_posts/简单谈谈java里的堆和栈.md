@@ -8,7 +8,7 @@ date: 2020-03-12 21:02:31
 password:
 summary:
 tags:
-categories:
+categories: Java
 ---
 
 Java把内存分成两种，一种叫做栈内存，一种叫做堆内存
