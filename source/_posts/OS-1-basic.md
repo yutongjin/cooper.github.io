@@ -8,7 +8,7 @@ date: 2020-04-13 15:24:19
 password:
 summary:
 tags:
-categories:
+categories: OS
 ---
 ## OS services functions
 
@@ -18,7 +18,8 @@ categories:
 - File-system manipulation
 - Communications(between processes)
 - Error detection
-others
+
+### others
 - Resource allocation
 - Accounting
 - Protection and security
