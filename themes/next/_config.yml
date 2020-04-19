@@ -100,7 +100,7 @@ menu:
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
-  With-恬: /With-恬
+  With-恬: /With-恬/ || 
   react-test: /test-react
 # Enable/Disable menu icons.
 menu_icons:
