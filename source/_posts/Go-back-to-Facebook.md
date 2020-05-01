@@ -8,9 +8,25 @@ date: 2020-04-28 22:15:42
 password:
 summary:
 tags:
-categories:backToFb
+categories: backToFb
 ---
-> 原因很简单，我觉得自己属于并值得那里。
+> todo
+
+|question|method?|
+|:-:|:------:|
+|delete node in BST|recursive|
+|dp||
+|quick select||
+|union find||
+*** 
+#### 4.30 有活干的感觉真爽
+
+##### 938 Range Sum of BST
+面经题，很像删bst node和222，优化可以到lgn（本题最坏情况on）
+
+##### 138 Copy List with Random Pointer	
+经典fb tag，按照构图加走图的原则来做，构图的原因是如果不先把点弄出来，random的指针无法get到。
+记得去做clone graph
 *** 
 #### 4.29 困了晚上刷不动题怎么办
 
