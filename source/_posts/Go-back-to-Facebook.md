@@ -18,7 +18,43 @@ categories: backToFb
 |dp||
 |quick select||
 |union find||
+|palindrome substring|dp做|
+
 *** 
+
+<!--more-->
+#### 5.7 不能偷懒！！！！
+##### Spiral Matrix
+
+两种做法，要不就在一个while循环里搞4个while循环 设置四个变量 空间o1
+更直观的做法是假设你在里面走，然后循环螺旋遍历。空间on，代码也比较复杂
+
+##### Populating Next Right Pointers in Each Node 1 & 2	
+默认就把自己当成不完全树做，用bfs搞，一层一层来。空间on
+
+#### 5.4 E5大佬的面经，好好做！！！[Link](https://www.1point3acres.com/bbs/forum.php?mod=viewthread&tid=632977&extra=page%3D1%26filter%3Dsortid%26sortid%3D311%26sortid%3D311)
+
+##### odd even linked list
+你可以一点点挪，但是这样结尾的点可能停在odd end 也可能停在even end，需要加一个变量check一下。
+最好办法是用记录两个list的oddhead和evenhead，base case是even的下一个没有了，这样一次挪两个。
+结束的时候直接odd.next = 最开始记录的even head即可。 同时cover了len = 1和len = 2两种base case。
+
+##### [单调函数](https://leetcode.com/problems/monotonic-array/)
+
+记录一个变量，就这么做吧，没别的更好的办法了
+
+*** 
+
+#### 5.2 周末快乐
+
+##### atmost remove 1 char to make palindrome 
+##### palindrome substring 
+dp不好理解的话， 尝试一下从中间char入手，效果惊人
+#### Find Peak Element
+用你的思路去写，尽管代码复杂一点，说清楚就行！
+
+*** 
+
 #### 4.30 有活干的感觉真爽
 
 ##### 938 Range Sum of BST
@@ -27,10 +63,10 @@ categories: backToFb
 ##### 138 Copy List with Random Pointer	
 经典fb tag，按照构图加走图的原则来做，构图的原因是如果不先把点弄出来，random的指针无法get到。
 记得去做clone graph
-*** 
-#### 4.29 困了晚上刷不动题怎么办
 
-<!--more-->
+*** 
+
+#### 4.29 困了晚上刷不动题怎么办
 
 ##### leetcode 973
 经典pq问题，优化从nlgn -> klgn 解决。不懂为什么有人用快排，nlgn 甚至 n方的算法。但是快排还是得在面试前看一下，永远的痛。215.
