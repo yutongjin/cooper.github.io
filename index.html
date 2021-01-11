@@ -50,7 +50,7 @@
 
 <link href="./lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="./css/main1.css" rel="stylesheet" type="text/css" />
+<link href="./css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="./images/apple-touch-icon-next.png?v=5.1.4">
@@ -82,7 +82,7 @@
 <meta name="description" content="要么不做，要做就做最好">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Yutong Jin">
-<meta property="og:url" content="http://yutongjin.github.io/index.html">
+<meta property="og:url" content="./index.html">
 <meta property="og:site_name" content="Yutong Jin">
 <meta property="og:description" content="要么不做，要做就做最好">
 <meta property="og:locale" content="en_US">
@@ -117,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="http://yutongjin.github.io/"/>
+  <link rel="canonical" href="./"/>
 
 
 
@@ -263,7 +263,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/10/16/Promise-1-Write-a-promise/">
+    <link itemprop="mainEntityOfPage" href="../2020/10/16/Promise-1-Write-a-promise/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
@@ -382,7 +382,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/04/28/Go-back-to-Facebook/">
+    <link itemprop="mainEntityOfPage" href="../2020/04/28/Go-back-to-Facebook/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
@@ -559,7 +559,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/04/16/OS-2-Synchronization/">
+    <link itemprop="mainEntityOfPage" href="../2020/04/16/OS-2-Synchronization/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
@@ -669,7 +669,7 @@
 <p>相当于</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">register2 = counter </span><br><span class="line">register2 = register1 - <span class="number">1</span> </span><br><span class="line">counter = register2</span><br></pre></td></tr></table></figure>
 
-<p>有可能下面的情况出现<br><img src="/2020/04/16/OS-2-Synchronization/mutualProb.png" alt="alt"><br>(此处感谢<br><a href="https://myfavs.win/2019/08/08/%E8%AE%B0%E5%BD%95-Hexo-%E5%9B%BE%E7%89%87%E7%9A%84%E5%9D%91/" target="_blank" rel="noopener">https://myfavs.win/2019/08/08/%E8%AE%B0%E5%BD%95-Hexo-%E5%9B%BE%E7%89%87%E7%9A%84%E5%9D%91/</a><br>解决了图片问题)</p>
+<p>有可能下面的情况出现<br><img src="/16/OS-2-Synchronization/mutualProb.png" alt="alt"><br>(此处感谢<br><a href="https://myfavs.win/2019/08/08/%E8%AE%B0%E5%BD%95-Hexo-%E5%9B%BE%E7%89%87%E7%9A%84%E5%9D%91/" target="_blank" rel="noopener">https://myfavs.win/2019/08/08/%E8%AE%B0%E5%BD%95-Hexo-%E5%9B%BE%E7%89%87%E7%9A%84%E5%9D%91/</a><br>解决了图片问题)</p>
 <h2 id="1-Critical-Section"><a href="#1-Critical-Section" class="headerlink" title="1.Critical Section"></a>1.Critical Section</h2><blockquote>
 <p>The important feature of the system is that, when one process is executing in its critical section, no other process is allowed to execute in its critical section. That is, no two processes are executing in their critical sections at the same time. The critical-section problem is to design a protocol that the processes can use to cooperate. </p>
 </blockquote>
@@ -692,7 +692,7 @@
 <p>There exists a bound, or limit, on the number of times that other processes are allowed to enter their critical sections after a entry section critical section exit section.</p>
 </blockquote>
 <p>每个程序都会进入critical section 而不是starve forever.</p>
-<h2 id="2-Peterson-Solution-and-Dekker’s-Solution"><a href="#2-Peterson-Solution-and-Dekker’s-Solution" class="headerlink" title="2. Peterson Solution and Dekker’s Solution"></a>2. Peterson Solution and Dekker’s Solution</h2><h3 id="Peterson"><a href="#Peterson" class="headerlink" title="Peterson"></a>Peterson</h3><p><img src="/2020/04/16/OS-2-Synchronization/Peterson.png" alt></p>
+<h2 id="2-Peterson-Solution-and-Dekker’s-Solution"><a href="#2-Peterson-Solution-and-Dekker’s-Solution" class="headerlink" title="2. Peterson Solution and Dekker’s Solution"></a>2. Peterson Solution and Dekker’s Solution</h2><h3 id="Peterson"><a href="#Peterson" class="headerlink" title="Peterson"></a>Peterson</h3><p><img src="/16/OS-2-Synchronization/Peterson.png" alt></p>
 <h3 id="Dekker"><a href="#Dekker" class="headerlink" title="Dekker"></a>Dekker</h3><p>There is a process on how versions change.</p>
 <blockquote>
 <p><a href="https://www.geeksforgeeks.org/dekkers-algorithm-in-process-synchronization/" target="_blank" rel="noopener">https://www.geeksforgeeks.org/dekkers-algorithm-in-process-synchronization/</a></p>
@@ -745,7 +745,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/04/13/OS-1-basic/">
+    <link itemprop="mainEntityOfPage" href="../2020/04/13/OS-1-basic/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
@@ -906,7 +906,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/04/10/Effective-Java-2-1-Override-Annotation/">
+    <link itemprop="mainEntityOfPage" href="../2020/04/10/Effective-Java-2-1-Override-Annotation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
@@ -1070,7 +1070,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/04/08/github-page-%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E6%98%BE%E7%A4%BA404-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="../2020/04/08/github-page-%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E6%98%BE%E7%A4%BA404-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
@@ -1190,7 +1190,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/04/07/Redux-2-Data-Flow/">
+    <link itemprop="mainEntityOfPage" href="../2020/04/07/Redux-2-Data-Flow/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
@@ -1320,7 +1320,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/04/07/Redux-1/">
+    <link itemprop="mainEntityOfPage" href="../2020/04/07/Redux-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
@@ -1477,7 +1477,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/04/03/this-bind-arrow-function-in-js/">
+    <link itemprop="mainEntityOfPage" href="../2020/04/03/this-bind-arrow-function-in-js/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
@@ -1598,7 +1598,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io./2020/03/21/%E9%87%8D%E6%B8%A9HF%E4%B9%8B3-%E6%8E%8C%E6%8F%A1%E5%A4%9A%E6%80%81%E6%80%A7/">
+    <link itemprop="mainEntityOfPage" href="../2020/03/21/%E9%87%8D%E6%B8%A9HF%E4%B9%8B3-%E6%8E%8C%E6%8F%A1%E5%A4%9A%E6%80%81%E6%80%A7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Cubo">
