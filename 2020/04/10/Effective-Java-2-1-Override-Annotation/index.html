@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Override Equals," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Given a class below : 12345678910111213141516171819202122232425262728&#x2F;&#x2F; Can you spot the bug? (Page 188)public class Bigram &amp;#123;    private final char first;    private final char second;    public">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Effective Java C6i40 ---- Override Annotation">
+<meta property="og:url" content="http://yutongjin.github.io/2020/04/10/Effective-Java-2-1-Override-Annotation/index.html">
+<meta property="og:site_name" content="Yutong Jin">
+<meta property="og:description" content="Given a class below : 12345678910111213141516171819202122232425262728&#x2F;&#x2F; Can you spot the bug? (Page 188)public class Bigram &amp;#123;    private final char first;    private final char second;    public">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-04-10T22:03:28.000Z">
+<meta property="article:modified_time" content="2020-04-10T22:33:51.562Z">
+<meta property="article:author" content="Cubo">
+<meta property="article:tag" content="Override Equals">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yutongjin.github.io/2020/04/10/Effective-Java-2-1-Override-Annotation/"/>
+
+
+
+
+
+  <title>Effective Java C6i40 ---- Override Annotation | Yutong Jin</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <script type="text/javascript" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js"></script>
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Yutong Jin</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-with-恬">
+          <a href="/With-%E6%81%AC/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            With-恬
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-react-test">
+          <a href="/test-react" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            react-test
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io/2020/04/10/Effective-Java-2-1-Override-Annotation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cubo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/fugui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yutong Jin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Effective Java C6i40 ---- Override Annotation</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-10T15:03:28-07:00">
+                2020-04-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/10/Effective-Java-2-1-Override-Annotation/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count gitment-comments-count" data-xid="/2020/04/10/Effective-Java-2-1-Override-Annotation/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Given a class below :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Can you spot the bug? (Page 188)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Bigram</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span> first;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">char</span> second;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Bigram</span><span class="params">(<span class="keyword">char</span> first, <span class="keyword">char</span> second)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.first  = first;</span><br><span class="line">        <span class="keyword">this</span>.second = second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Bigram b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b.first == first &amp;&amp; b.second == second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hashCode</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">31</span> * first + second;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Set&lt;Bigram&gt; s = <span class="keyword">new</span> HashSet&lt;&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">char</span> ch = <span class="string">'a'</span>; ch &lt;= <span class="string">'z'</span>; ch++)</span><br><span class="line">                s.add(<span class="keyword">new</span> Bigram(ch, ch));</span><br><span class="line">        System.out.println(s.size());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//what we want is 26.</span></span><br><span class="line"><span class="comment">//but the real answer is 260</span></span><br></pre></td></tr></table></figure>
+
+<p>If we don’t add Override annotation, equals method will not work.</p>
+<p>Actually we want to override equals and even hashCode method, however, there is no <strong>@Override</strong> annotation.</p>
+<p>Also the type of parameter we pass into equals method is wrong,(should be Object).</p>
+<p>So overloading happens instead of overriding.</p>
+<p>Whatever we do in Set s, s deals with different element within it by Object.equals method :</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">   * Indicates whether some other object is "equal to" this one.</span></span><br><span class="line"><span class="comment">   * &lt;p&gt;</span></span><br><span class="line"><span class="comment">   * The &#123;<span class="doctag">@code</span> equals&#125; method implements an equivalence relation</span></span><br><span class="line"><span class="comment">   * on non-null object references:</span></span><br><span class="line"><span class="comment">   * &lt;ul&gt;</span></span><br><span class="line"><span class="comment">   * &lt;li&gt;It is &lt;i&gt;reflexive&lt;/i&gt;: for any non-null reference value</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> x&#125;, &#123;<span class="doctag">@code</span> x.equals(x)&#125; should return</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> true&#125;.</span></span><br><span class="line"><span class="comment">   * &lt;li&gt;It is &lt;i&gt;symmetric&lt;/i&gt;: for any non-null reference values</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> x&#125; and &#123;<span class="doctag">@code</span> y&#125;, &#123;<span class="doctag">@code</span> x.equals(y)&#125;</span></span><br><span class="line"><span class="comment">   *     should return &#123;<span class="doctag">@code</span> true&#125; if and only if</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> y.equals(x)&#125; returns &#123;<span class="doctag">@code</span> true&#125;.</span></span><br><span class="line"><span class="comment">   * &lt;li&gt;It is &lt;i&gt;transitive&lt;/i&gt;: for any non-null reference values</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> x&#125;, &#123;<span class="doctag">@code</span> y&#125;, and &#123;<span class="doctag">@code</span> z&#125;, if</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> x.equals(y)&#125; returns &#123;<span class="doctag">@code</span> true&#125; and</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> y.equals(z)&#125; returns &#123;<span class="doctag">@code</span> true&#125;, then</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> x.equals(z)&#125; should return &#123;<span class="doctag">@code</span> true&#125;.</span></span><br><span class="line"><span class="comment">   * &lt;li&gt;It is &lt;i&gt;consistent&lt;/i&gt;: for any non-null reference values</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> x&#125; and &#123;<span class="doctag">@code</span> y&#125;, multiple invocations of</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> x.equals(y)&#125; consistently return &#123;<span class="doctag">@code</span> true&#125;</span></span><br><span class="line"><span class="comment">   *     or consistently return &#123;<span class="doctag">@code</span> false&#125;, provided no</span></span><br><span class="line"><span class="comment">   *     information used in &#123;<span class="doctag">@code</span> equals&#125; comparisons on the</span></span><br><span class="line"><span class="comment">   *     objects is modified.</span></span><br><span class="line"><span class="comment">   * &lt;li&gt;For any non-null reference value &#123;<span class="doctag">@code</span> x&#125;,</span></span><br><span class="line"><span class="comment">   *     &#123;<span class="doctag">@code</span> x.equals(null)&#125; should return &#123;<span class="doctag">@code</span> false&#125;.</span></span><br><span class="line"><span class="comment">   * &lt;/ul&gt;</span></span><br><span class="line"><span class="comment">   * &lt;p&gt;</span></span><br><span class="line"><span class="comment">   * The &#123;<span class="doctag">@code</span> equals&#125; method for class &#123;<span class="doctag">@code</span> Object&#125; implements</span></span><br><span class="line"><span class="comment">   * the most discriminating possible equivalence relation on objects;</span></span><br><span class="line"><span class="comment">   * that is, for any non-null reference values &#123;<span class="doctag">@code</span> x&#125; and</span></span><br><span class="line"><span class="comment">   * &#123;<span class="doctag">@code</span> y&#125;, this method returns &#123;<span class="doctag">@code</span> true&#125; if and only</span></span><br><span class="line"><span class="comment">   * if &#123;<span class="doctag">@code</span> x&#125; and &#123;<span class="doctag">@code</span> y&#125; refer to the same object</span></span><br><span class="line"><span class="comment">   * (&#123;<span class="doctag">@code</span> x == y&#125; has the value &#123;<span class="doctag">@code</span> true&#125;).</span></span><br><span class="line"><span class="comment">   * &lt;p&gt;</span></span><br><span class="line"><span class="comment">   * Note that it is generally necessary to override the &#123;<span class="doctag">@code</span> hashCode&#125;</span></span><br><span class="line"><span class="comment">   * method whenever this method is overridden, so as to maintain the</span></span><br><span class="line"><span class="comment">   * general contract for the &#123;<span class="doctag">@code</span> hashCode&#125; method, which states</span></span><br><span class="line"><span class="comment">   * that equal objects must have equal hash codes.</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span>   obj   the reference object with which to compare.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span>  &#123;<span class="doctag">@code</span> true&#125; if this object is the same as the obj</span></span><br><span class="line"><span class="comment">   *          argument; &#123;<span class="doctag">@code</span> false&#125; otherwise.</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@see</span>     #hashCode()</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@see</span>     java.util.HashMap</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">equals</span><span class="params">(Object obj)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> (<span class="keyword">this</span> == obj);</span><br></pre></td></tr></table></figure>
+
+<p>So there are different 260 objects in s.</p>
+<h3 id="Properties-of-equals-function"><a href="#Properties-of-equals-function" class="headerlink" title="Properties of equals function"></a>Properties of equals function</h3><ul>
+<li>reflexive</li>
+<li>symmetric</li>
+<li>transitive</li>
+<li>consistent</li>
+<li>non-null x =&gt; x.equals(null) =&gt; false</li>
+<li>x,y =&gt; refer to the same object =&gt; true</li>
+<li>remember to add @Override and override hashCode method</li>
+</ul>
+<blockquote>
+<p>clutter : 混乱<br>deem : 认为</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Override-Equals/" rel="tag"># Override Equals</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/08/github-page-%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E6%98%BE%E7%A4%BA404-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/" rel="next" title="github page 域名访问显示404 解决方法">
+                <i class="fa fa-chevron-left"></i> github page 域名访问显示404 解决方法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/13/OS-1-basic/" rel="prev" title="OS(1) basic">
+                OS(1) basic <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC80OTYzNS8yNjEyNg=="></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/img/fugui.jpg"
+                alt="Cubo" />
+            
+              <p class="site-author-name" itemprop="name">Cubo</p>
+              <p class="site-description motion-element" itemprop="description">要么不做，要做就做最好</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/yutongjin" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:yjin3@scu.edu" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.youtube.com/channel/UCm89nr0F62fYVM3-u9HK4jA?view_as=subscriber" target="_blank" title="YouTube">
+                      
+                        <i class="fa fa-fw fa-youtube"></i>YouTube</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://instagram.com/cooperjyt" target="_blank" title="Instagram">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>Instagram</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Properties-of-equals-function"><span class="nav-number">1.</span> <span class="nav-text">Properties of equals function</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Cubo</span>
+
+  
+</div>
+
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+<!-- LOCAL: You can save these files to your site and update links -->
+    
+        
+        <link rel="stylesheet" href="https://aimingoo.github.io/gitmint/style/default.css">
+        <script src="https://aimingoo.github.io/gitmint/dist/gitmint.browser.js"></script>
+    
+<!-- END LOCAL -->
+
+    
+
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: 'window.location.pathname',
+            owner: 'yutongjin',
+            repo: 'gitment-comments',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: '0ddc9acb931ff1fd81de1425be19d30618c9218d',
+            
+                client_id: 'Iv1.575e699215cc9030'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
+    
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
