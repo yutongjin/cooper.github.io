@@ -263,125 +263,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io/2020/10/16/Promise-1-Write-a-promise/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Cubo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/img/fugui.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Yutong Jin">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/16/Promise-1-Write-a-promise/" itemprop="url">Promise(1) Write a promise</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-16T14:43:29-07:00">
-                2020-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io/2020/04/28/some-leetcode/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1724,6 +1605,155 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yutongjin.github.io/2020/03/21/%E9%87%8D%E6%B8%A9HF%E4%B9%8B3-%E6%8E%8C%E6%8F%A1%E5%A4%9A%E6%80%81%E6%80%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Cubo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/img/fugui.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Yutong Jin">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/21/%E9%87%8D%E6%B8%A9HF%E4%B9%8B3-%E6%8E%8C%E6%8F%A1%E5%A4%9A%E6%80%81%E6%80%A7/" itemprop="url">重温HF之3-掌握多态性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-21T14:34:59-07:00">
+                2020-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="1-static-多态"><a href="#1-static-多态" class="headerlink" title="1. static 多态"></a>1. static 多态</h2><p>也叫compile 多态，本质就是编译时method的多态性，其实就是方法的overload.</p>
+<blockquote>
+<p>Same method name is overloaded with different type or number of parameters in same class (different signature). Targeted method call is resolved at compile time</p>
+</blockquote>
+<h2 id="2-dynamic-多态"><a href="#2-dynamic-多态" class="headerlink" title="2.dynamic 多态"></a>2.dynamic 多态</h2><p>也叫runtime 多态，本质是继承属性和函数override的组合。<br>看过很多文章在讲向上转型（upcasting）和向下转型（downcasting），有的文章讲的非常复杂，研究了一番后打算总结如下。</p>
+<h3 id="（1）向下转型"><a href="#（1）向下转型" class="headerlink" title="（1）向下转型"></a>（1）向下转型</h3><p>其实是最简单的一种–人工强制cast。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sup</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Sup m1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sub</span> <span class="keyword">extends</span> <span class="title">Sup</span></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">m1</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Sub m1"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">m2</span><span class="params">()</span></span>&#123;</span><br><span class="line">		System.out.println(<span class="string">"Sub m2"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这里我们进行一个操作</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Sup a = <span class="keyword">new</span> Sub();</span><br><span class="line">a.m1();<span class="comment">// Sub m1</span></span><br><span class="line">a.m2();<span class="comment">// 找不到符号，因为 ref 为 a的变量找不到m2方法，也就是上一章我们说过的父类不知道子类</span></span><br><span class="line">((Sub)a).m2();<span class="comment">//如果想调用Sub实例的方法，就必须强制cast，但是操作危险性大。</span></span><br></pre></td></tr></table></figure>
+<h3 id="（2）向上转型"><a href="#（2）向上转型" class="headerlink" title="（2）向上转型"></a>（2）向上转型</h3><p>说白了，向上转型就是</p>
+<h5 id="1-在自己的ref-class-里没有找到想要的方法，把自己（自动向上转型）变成父类找这个方法。"><a href="#1-在自己的ref-class-里没有找到想要的方法，把自己（自动向上转型）变成父类找这个方法。" class="headerlink" title="1.在自己的ref class 里没有找到想要的方法，把自己（自动向上转型）变成父类找这个方法。"></a>1.在自己的ref class 里没有找到想要的方法，把自己（自动向上转型）变成父类找这个方法。</h5><h5 id="2-找到的话再以new出来的对象为bottom看看override到哪层。"><a href="#2-找到的话再以new出来的对象为bottom看看override到哪层。" class="headerlink" title="2.找到的话再以new出来的对象为bottom看看override到哪层。"></a>2.找到的话再以new出来的对象为bottom看看override到哪层。</h5><blockquote>
+<p>我们不妨换个思考的角度，为什么要 “把自己（自动向上转型）变成父类”？？？</p>
+</blockquote>
+<h5 id="我本身就是个父类啊，继承就是因为我满足了IS-A关系，我为什么不能默认把父类的方法都取到自己身上然后去找呢？"><a href="#我本身就是个父类啊，继承就是因为我满足了IS-A关系，我为什么不能默认把父类的方法都取到自己身上然后去找呢？" class="headerlink" title="我本身就是个父类啊，继承就是因为我满足了IS-A关系，我为什么不能默认把父类的方法都取到自己身上然后去找呢？"></a>我本身就是个父类啊，继承就是因为我满足了IS-A关系，我为什么不能默认把父类的方法都取到自己身上然后去找呢？</h5><p>so 找到之后再从ref 往下 看有没有override的情况然后以new出来的对象为底，结束。</p>
+<p><strong>如果形式参数没有怎么办?</strong></p>
+<blockquote>
+<p>答：把形式参数多态向上找。</p>
+</blockquote>
+<h2 id="用一个经典案例解释上面"><a href="#用一个经典案例解释上面" class="headerlink" title="用一个经典案例解释上面"></a>用一个经典案例解释上面</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestForPoli</span> </span>&#123;</span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(D obj)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="string">"A and D"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(A obj)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="string">"A and A"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(B obj)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="string">"B and B"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(A obj)</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="string">"B and A"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">showOnlyInB</span><span class="params">()</span></span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="string">"showOnlyInB"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(D obj)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="string">"C and D"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">D</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> String <span class="title">show</span><span class="params">(D obj)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="string">"D and D"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        A a1 = <span class="keyword">new</span> A();</span><br><span class="line">        A a2 = <span class="keyword">new</span> B();</span><br><span class="line">        B b = <span class="keyword">new</span> B();</span><br><span class="line">        C c = <span class="keyword">new</span> C();</span><br><span class="line">        D d = <span class="keyword">new</span> D();</span><br><span class="line">        A ac = <span class="keyword">new</span> C();</span><br><span class="line">        B bc = <span class="keyword">new</span> D();</span><br><span class="line">        System.out.println(<span class="string">"1--"</span> + a1.show(b));</span><br><span class="line">        System.out.println(<span class="string">"2--"</span> + a1.show(c));</span><br><span class="line">        System.out.println(<span class="string">"3--"</span> + a1.show(d));</span><br><span class="line">        System.out.println(<span class="string">"4--"</span> + a2.show(b));</span><br><span class="line">        System.out.println(<span class="string">"5--"</span> + a2.show(c));</span><br><span class="line">        System.out.println(<span class="string">"6--"</span> + a2.show(d));</span><br><span class="line">        System.out.println(<span class="string">"7--"</span> + b.show(b));</span><br><span class="line">        System.out.println(<span class="string">"8--"</span> + b.show(c));</span><br><span class="line">        System.out.println(<span class="string">"9--"</span> + b.show(d));</span><br><span class="line">        System.out.println(<span class="string">"10--"</span> + ac.show(d));</span><br><span class="line">        System.out.println(<span class="string">"11--"</span> + bc.show(d));</span><br><span class="line">        <span class="comment">//test for down cast</span></span><br><span class="line">        System.out.println(<span class="string">"12--"</span> + ((B)a2).show(b));</span><br><span class="line">        <span class="comment">//System.out.println("13--" + a2.showOnlyInB());</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>--A and A</span><br><span class="line"><span class="number">2</span>--A and A</span><br><span class="line"><span class="number">3</span>--A and D</span><br><span class="line"><span class="number">4</span>--B and A</span><br><span class="line"><span class="number">5</span>--B and A</span><br><span class="line"><span class="number">6</span>--A and D</span><br><span class="line"><span class="number">7</span>--B and B</span><br><span class="line"><span class="number">8</span>--B and B</span><br><span class="line"><span class="number">9</span>--A and D</span><br><span class="line"><span class="number">10</span>--C and D</span><br><span class="line"><span class="number">11</span>--D and D</span><br><span class="line"><span class="number">12</span>--B and B</span><br></pre></td></tr></table></figure>
+<h4 id="（1）a1-show-b"><a href="#（1）a1-show-b" class="headerlink" title="（1）a1.show(b)"></a>（1）a1.show(b)</h4><blockquote>
+<p>a1 ：ref为A，实例为A，向上的关系只有object，show（b）找不到，尝试去找show（（super）b）也就是把形式参数向上转型，找到了show（A a）方法，所以输出A and A。<br>2 3 同理。</p>
+</blockquote>
+<h4 id="（2）a2-show-b"><a href="#（2）a2-show-b" class="headerlink" title="（2）a2.show(b)"></a>（2）a2.show(b)</h4><blockquote>
+<p>a2 ：ref为A，实例为B，向上的关系只有object，show（b）找不到，尝试去找show（（super）b）就是把形式参数向上转型，找到了show（A a）方法，（到这里和上面是一样的），但是实例为B，我们需要进行的操作是看show（A a）方法有没有被override，然后发现class B里有一个show（A a）的方法，故输出B and A<br>5 同理，6是因为A里直接有一个show（D d）的method，而且这个方法没有被实例B override，故输出A and D<br>7 easy</p>
+</blockquote>
+<h4 id="（3）b-show-c"><a href="#（3）b-show-c" class="headerlink" title="（3）b.show(c)"></a>（3）b.show(c)</h4><p>这里我们使用向上转型继承的方法，把b的super类a的方法都加到b里，然后还是没有找到show（B）的办法，我们此时就去找形式参数c的super类，向上找到了B，于是输出B and B</p>
+<h4 id="（4）b-show-d"><a href="#（4）b-show-d" class="headerlink" title="（4）b.show(d)"></a>（4）b.show(d)</h4><p>这里我们使用向上转型继承的方法，把b的super类a的方法都加到b里，解决。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -1778,7 +1808,7 @@
               
                 <a href="/archives%7C%7C%20archive">
               
-                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-count">16</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
